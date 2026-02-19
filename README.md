@@ -50,6 +50,10 @@ gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/
 
 - On Wayland, changes to extensions are sometimes not picked up until **logout/login**.
 
+## Support
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V01UDZTK)
+
 ## Development
 Extension sources live in:
 - `gnome-extension/openclaw-usage-indicator@clawd/`
