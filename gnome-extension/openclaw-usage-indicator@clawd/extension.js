@@ -63,20 +63,40 @@ function isActive(settings) {
   return ageMs <= maxAgeMs;
 }
 
-function normalizeWindowLabel(w) {
-  const label = w?.label;
-  if (!label)
+function deriveWindowLabelFromResetAt(resetAtMs) {
+  if (typeof resetAtMs !== 'number')
     return null;
 
-  // OpenClaw currently reports the longer window as "Day" in some setups,
-  // but resetAt clearly indicates it's a ~7-day bucket. Make the label match reality.
-  if (label === 'Day' && typeof w.resetAt === 'number') {
-    const hoursLeft = (w.resetAt - nowMs()) / 3600000;
-    if (hoursLeft > 36)
-      return 'Week';
+  const hoursLeft = (resetAtMs - nowMs()) / 3600000;
+  if (!Number.isFinite(hoursLeft))
+    return null;
+
+  // Heuristic buckets:
+  // - "5h" window typically resets in a few hours
+  // - "Day" window resets within ~36h
+  // - otherwise it's the ~7-day bucket
+  if (hoursLeft > 36)
+    return 'Week';
+  return 'Day';
+}
+
+function normalizeWindowLabel(w) {
+  const raw = w?.label;
+
+  // If we have resetAt, prefer to derive Day/Week from the actual time-to-reset
+  // instead of trusting the raw label (OpenClaw sometimes reports Week as "Day").
+  if (typeof w?.resetAt === 'number') {
+    const derived = deriveWindowLabelFromResetAt(w.resetAt);
+
+    // Keep "5h" as-is (it's already explicit and more useful than derived "Day").
+    if (raw === '5h')
+      return raw;
+
+    if (derived)
+      return derived;
   }
 
-  return label;
+  return raw || null;
 }
 
 function formatUsageLabel(usageJson) {
