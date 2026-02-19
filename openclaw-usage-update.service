@@ -1,0 +1,6 @@
+[Unit]
+Description=OpenClaw usage indicator cache updater
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/openclaw-usage-update-cache

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.openclaw-usage-indicator" path="/org/gnome/shell/extensions/openclaw-usage-indicator/">
+    <key name="active-window-minutes" type="i">
+      <default>15</default>
+      <summary>Activity window (minutes)</summary>
+      <description>If OpenClaw had session activity in the last N minutes, treat as active.</description>
+    </key>
+
+    <key name="active-refresh-seconds" type="i">
+      <default>150</default>
+      <summary>Refresh interval when active (seconds)</summary>
+    </key>
+
+    <key name="idle-refresh-seconds" type="i">
+      <default>1800</default>
+      <summary>Refresh interval when idle (seconds)</summary>
+    </key>
+
+    <key name="show-when-idle" type="b">
+      <default>true</default>
+      <summary>Show an idle label when idle</summary>
+    </key>
+
+    <key name="idle-label" type="s">
+      <default>'OpenClaw: idle'</default>
+      <summary>Idle label text</summary>
+    </key>
+
+    <key name="openclaw-path" type="s">
+      <default>'openclaw'</default>
+      <summary>Path to the openclaw CLI</summary>
+      <description>Set this to an absolute path if GNOME Shell cannot find `openclaw` on PATH.</description>
+    </key>
+  </schema>
+</schemalist>
