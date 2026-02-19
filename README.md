@@ -1,13 +1,13 @@
 # OpenClaw Usage Indicator (GNOME Shell Extension)
 
-A **product-style GNOME Shell top-bar indicator** that shows OpenClaw/Codex usage windows (e.g. **5h / Day remaining**) with **adaptive refresh** (fast when active, slow when idle).
+A **product-style GNOME Shell top-bar indicator** that shows OpenClaw/Codex usage windows (e.g. **5h / Week remaining**) with **adaptive refresh** (fast when active, slow when idle).
 
 ![Top bar](./assets/screenshot.jpg)
 
 ![Menu](./assets/menu.jpg)
 
 ## What it shows
-- Top bar label like: `Codex 5h:85% Day:87%`
+- Top bar label like: `Codex 5h:85% Week:87%`
 - Menu (click indicator):
   - Provider / plan
   - Last update timestamp
