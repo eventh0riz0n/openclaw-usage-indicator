@@ -2,7 +2,7 @@
   "uuid": "openclaw-usage-indicator@clawd",
   "name": "OpenClaw Usage Indicator",
   "description": "Shows OpenClaw provider usage windows (e.g. 5h/Day remaining %) in the GNOME top bar with adaptive refresh.",
-  "version": 4,
+  "version": 5,
   "shell-version": ["46"],
   "settings-schema": "org.gnome.shell.extensions.openclaw-usage-indicator",
   "url": "https://github.com/openclaw/openclaw"

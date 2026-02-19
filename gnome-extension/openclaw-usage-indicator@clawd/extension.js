@@ -63,6 +63,22 @@ function isActive(settings) {
   return ageMs <= maxAgeMs;
 }
 
+function normalizeWindowLabel(w) {
+  const label = w?.label;
+  if (!label)
+    return null;
+
+  // OpenClaw currently reports the longer window as "Day" in some setups,
+  // but resetAt clearly indicates it's a ~7-day bucket. Make the label match reality.
+  if (label === 'Day' && typeof w.resetAt === 'number') {
+    const hoursLeft = (w.resetAt - nowMs()) / 3600000;
+    if (hoursLeft > 36)
+      return 'Week';
+  }
+
+  return label;
+}
+
 function formatUsageLabel(usageJson) {
   // usageJson expected shape from `openclaw status --usage --json`
   const providers = usageJson?.usage?.providers;
@@ -75,7 +91,7 @@ function formatUsageLabel(usageJson) {
 
   const parts = [];
   for (const w of windows) {
-    const label = w.label;
+    const label = normalizeWindowLabel(w);
     const used = typeof w.usedPercent === 'number' ? w.usedPercent : 0;
     const left = Math.max(0, 100 - used);
     if (label)
