@@ -2,7 +2,9 @@
 
 A **product-style GNOME Shell top-bar indicator** that shows OpenClaw/Codex usage windows (e.g. **5h / Day remaining**) with **adaptive refresh** (fast when active, slow when idle).
 
-![Screenshot](./assets/screenshot.jpg)
+![Top bar](./assets/screenshot.jpg)
+
+![Menu](./assets/menu.jpg)
 
 ## What it shows
 - Top bar label like: `Codex 5h:85% Day:87%`
