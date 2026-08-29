@@ -61,6 +61,5 @@ Extension sources live in:
 Pack ZIP:
 
 ```bash
-cd gnome-extension
-zip -r openclaw-usage-indicator@clawd.zip openclaw-usage-indicator@clawd
+bash scripts/package.sh
 ```
